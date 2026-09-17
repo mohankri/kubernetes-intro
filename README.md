@@ -1,3 +1,7 @@
+# Build a Docker Image with ssh 
+```
+docker build -f Dockerfile.ssh-node -t ssh-node:v1.37.0 .
+```
 ```
 kubectl run nginx --image=nginx // install nginx
 kubectl get pods -o wide
