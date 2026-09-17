@@ -1,6 +1,8 @@
-# Build a Docker Image with ssh 
+# Build a Docker Image with ssh & create a kubernetes cluster
 ```
 docker build -f Dockerfile.ssh-node -t ssh-node:v1.37.0 .
+
+kind create cluster --config kind-3node.yaml
 ```
 ```
 kubectl run nginx --image=nginx // install nginx
