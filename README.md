@@ -32,3 +32,20 @@ curl localhost:12345
 
 ```
 
+# Deployment
+```
+kubectl apply -f resources.yaml
+kubectl get deploy frontend
+NAME       READY   UP-TO-DATE   AVAILABLE   AGE
+frontend   1/1     1            1           7m25s
+
+Change replicas to 3
+kubectl apply -f resources.yaml
+
+kmohan@A02905 deployment % kubectl get deploy frontend    
+NAME       READY   UP-TO-DATE   AVAILABLE   AGE
+frontend   3/3     3            3           9m8s
+
+kubectl get pods -l app=frontend -w // to watch on separate terminal
+
+```
