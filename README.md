@@ -110,3 +110,22 @@ kubectl run -it --rm --image=superorbital/toolbox bash
 curl http://load-balancer-external-ip-address/
 
 ```
+# Adding Namespace
+```
+Edit the resources.yaml with 
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: frontend
+----
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  namespace: frontend <<<<<< 
+  labels:
+    app: frontend
+....
+....
+```
