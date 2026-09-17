@@ -129,3 +129,9 @@ metadata:
 ....
 ....
 ```
+# One time Job
+```
+kubectl apply -f jobs.yaml
+kubectl get pods -w
+kubectl logs <pod-name>
+```
