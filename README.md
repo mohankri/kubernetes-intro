@@ -61,13 +61,13 @@ ports:
 Now any external pod requesting request at port 80 will be forwarded to 5000 to all underlying pod
 
 kubectl get pods -o wide
-NAME                       READY   STATUS    RESTARTS   AGE     IP           NODE                      NOMINATED NODE   READINESS GATES
-colorful                   1/1     Running   0          3h39m   10.244.1.2   krishna-cluster-worker3   <none>           <none>
-coolcache                  1/1     Running   0          3h45m   10.244.5.3   krishna-cluster-worker2   <none>           <none>
-frontend-7bb45c46d-7rv47   1/1     Running   0          168m    10.244.1.3   krishna-cluster-worker3   <none>           <none>
-frontend-7bb45c46d-g67kg   1/1     Running   0          177m    10.244.2.4   krishna-cluster-worker    <none>           <none>
-frontend-7bb45c46d-rnwx6   1/1     Running   0          168m    10.244.5.4   krishna-cluster-worker2   <none>           <none>
-nginx                      1/1     Running   0          3h49m   10.244.2.3   krishna-cluster-worker    <none>           <none>
+NAME                       READY   STATUS    RESTARTS   AGE     IP                                 
+colorful                   1/1     Running   0          3h39m   10.244.1.2   
+coolcache                  1/1     Running   0          3h45m   10.244.5.3   
+frontend-7bb45c46d-7rv47   1/1     Running   0          168m    10.244.1.3   
+frontend-7bb45c46d-g67kg   1/1     Running   0          177m    10.244.2.4  
+frontend-7bb45c46d-rnwx6   1/1     Running   0          168m    10.244.5.4  
+nginx                      1/1     Running   0          3h49m   10.244.2.3  
 
 create a new pod
 kubectl run -it --rm --image=superorbital/toolbox shell
