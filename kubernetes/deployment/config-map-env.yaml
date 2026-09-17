@@ -1,0 +1,46 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: season
+data:
+  season_name: autumn
+  leaves: falling
+  weather: brisk
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: env-mounter
+spec:
+  selector:
+    matchLabels:
+      app: env-mounter
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: env-mounter
+    spec:
+      containers:
+      - name: example
+        image: superorbital/example
+        envFrom: 
+        - configMapRef:
+            name: season
+        ports:
+        - containerPort: 5000
+          name: http
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: env-mounter
+spec:
+  selector:
+    app: env-mounter
+  type: LoadBalancer
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: http

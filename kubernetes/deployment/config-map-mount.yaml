@@ -1,0 +1,49 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: season
+data:
+  season_name: autumn
+  leaves: falling
+  weather: brisk
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: volume-mounter
+spec:
+  selector:
+    matchLabels:
+      app: volume-mounter
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: volume-mounter
+    spec:
+      volumes: # See hints section in lab instructions
+      - name: season
+        configMap:
+          name: season
+      containers:
+      - name: example
+        image: superorbital/example
+        volumeMounts:
+        - name: season  # Must match volume name above
+          mountPath: /config
+        ports:
+        - containerPort: 5000
+          name: http
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: volume-mounter
+spec:
+  selector:
+    app: volume-mounter
+  type: LoadBalancer
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: http

@@ -1,0 +1,24 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: coin-job
+spec:
+  template:
+    spec:
+      containers:
+      - name: flip
+        image: superorbital/toolbox
+        command:
+        - "bash"
+        - "-c"
+        - |
+          echo Rolling...
+          if ((RANDOM % 2 == 0)); then
+            echo Lucky
+            exit 0
+          else
+            echo Unlucky
+            exit 1
+          fi
+      restartPolicy: Never
+  backoffLimit: 3
