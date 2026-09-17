@@ -52,6 +52,7 @@ kubectl get pods -l app=frontend -w // to watch on separate terminal
 
 ```
 # Services
+```
 kubectl apply -f service.yaml
 It will have configuration for
 ports:
