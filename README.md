@@ -1,9 +1,11 @@
+```
 kubectl run nginx --image=nginx // install nginx
 kubectl get pods -o wide
 
 node$ crictl ps
 
 ssh -p 2223 root@localhost // ssh to pod or control plane change the port id assigned in yaml file
+```
 
 # Install memcached
 ```
