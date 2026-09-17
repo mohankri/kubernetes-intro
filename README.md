@@ -61,6 +61,7 @@ ports:
 Now any external pod requesting request at port 80 will be forwarded to 5000 to all underlying pod
 
 kubectl get pods -o wide
+
 NAME                       READY   STATUS    RESTARTS   AGE     IP                                 
 colorful                   1/1     Running   0          3h39m   10.244.1.2   
 coolcache                  1/1     Running   0          3h45m   10.244.5.3   
@@ -81,4 +82,20 @@ $ curl 10.244.1.2
 {"color":"UNKNOWN.  Please set the $COLOR environment variable."}
 
 So curl from shell pod at 80 is forward to colorful pod.
+```
+
+# Load Balancer
+```
+change spec to type: LoadBalancer
+Ensure you have running 
+sudo cloud-provider-kind /* process for LoadBalancer service to get external IP address */
+
+Test Load Balancer
+kubectl get svc frontend
+kubectl get endpoints frontend 
+
+kubectl run -it --rm --image=superorbital/toolbox bash
+
+curl http://load-balancer-external-ip-address/
+
 ```
