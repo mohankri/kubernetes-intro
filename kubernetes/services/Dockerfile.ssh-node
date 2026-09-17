@@ -1,5 +1,0 @@
-FROM kindest/node:v1.37.0
-RUN apt-get update && apt-get install -y openssh-server && mkdir -p /root/.ssh && chmod 700 /root/.ssh && \
-    ln -sf /lib/systemd/system/ssh.service /etc/systemd/system/multi-user.target.wants/ssh.service
-COPY authorized_keys /root/.ssh/authorized_keys
-RUN chmod 600 /root/.ssh/authorized_keys
