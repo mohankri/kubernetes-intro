@@ -3,6 +3,10 @@
 docker build -f Dockerfile.ssh-node -t ssh-node:v1.37.0 .
 
 kind create cluster --config kind-3node.yaml
+
+kind get clusters
+kubectl get nodes -o wide
+
 ```
 ```
 kubectl run nginx --image=nginx // install nginx
