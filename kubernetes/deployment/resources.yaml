@@ -1,9 +1,17 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: personal
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: frontend
+  namespace: personal
   labels:
+    class: ephemeral
     app: frontend
+    owner: Krishna
 spec:
   replicas: 3
   selector:
