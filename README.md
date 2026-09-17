@@ -135,3 +135,16 @@ kubectl apply -f jobs.yaml
 kubectl get pods -w
 kubectl logs <pod-name>
 ```
+# ConfigMap
+```
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: season
+data:
+  season_name: autumn
+  leaves: falling
+  weather: brisk
+
+# kubectl describe configmap season
+```
