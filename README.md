@@ -148,3 +148,20 @@ data:
 
 # kubectl describe configmap season
 ```
+# Verify ConfigMap env
+```
+- Port Forwarding
+# Port-forward — no LB dependency
+kubectl port-forward svc/env-mounter 8080:80
+curl -s localhost:8080/env
+
+- In-cluster
+kubectl run test --rm -it --image=curlimages/curl --restart=Never -- curl -s http://env-mounter/env
+
+- Load Balancer
+kubectl get svc env-mounter # grab EXTERNAL-IP once past <pending>
+curl -s http://<external-ip-addr>/env # Not working
+
+Same can be done via mount point
+
+```
