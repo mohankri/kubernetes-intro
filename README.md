@@ -97,7 +97,7 @@ So curl from shell pod at 80 is forward to colorful pod.
 
 # Load Balancer
 ```
-change spec to type: LoadBalancer
+change spec to type: LoadBalancer (ex: in service.yaml)
 Ensure you have running 
 sudo cloud-provider-kind /* process for LoadBalancer service to get external IP address */
 
